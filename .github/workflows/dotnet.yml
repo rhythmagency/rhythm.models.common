@@ -46,7 +46,7 @@ jobs:
       run: dotnet restore $SOLUTION
 
     - name: Build
-      run: dotnet build $SOLUTION --no-restore
+      run: dotnet build $SOLUTION --no-restore /p:version=${{ steps.gitversion.outputs.fullSemVer }}
 
     - name: Test
       run: dotnet test $SOLUTION --no-build --verbosity normal
