@@ -5,6 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Common models used by Rhythm NuGet packages.</Description>
+    <RepositoryUrl>https://github.com/rhythmagency/rhythm.models.common</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/rhythmagency/rhythm.models.common</PackageProjectUrl>
+    <Company>Rhythm</Company>
+    <Authors>rhythmagency</Authors>
   </PropertyGroup>
 
 </Project>
