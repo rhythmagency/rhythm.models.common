@@ -2,5 +2,5 @@
 
 public interface IPageModel : IHaveComponents
 {
-    IReadOnlyCollection<IBlockModel> Blocks { get; }
+    IReadOnlyCollection<IComponentModel> Content { get; }
 }
