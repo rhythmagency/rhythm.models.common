@@ -3,44 +3,44 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// A collection of extension methods that work with the <see cref="IHaveComponents"/> and <see cref="IComponentModel"/> interfaces to return flattened collections of <see cref="IComponentModel"/> classes.
+/// A collection of extension methods that work with the <see cref="IHavePageComponents"/> and <see cref="IPageComponentModel"/> interfaces to return flattened collections of <see cref="IPageComponentModel"/> classes.
 /// </summary>
 public static class FlattenExtensions
 {
     /// <summary>
-    /// Flattens the current <see cref="IHaveComponents" /> into a <see cref="IReadOnlyCollection{IComponentModel}" />.
+    /// Flattens the current <see cref="IHavePageComponents" /> into a <see cref="IReadOnlyCollection{IComponentModel}" />.
     /// </summary>
     /// <param name="model">The current model.</param>
-    /// <returns>A read only collection of <see cref="IComponentModel" />.</returns>
-    public static IReadOnlyCollection<IComponentModel> Flatten(this IHaveComponents? model)
+    /// <returns>A read only collection of <see cref="IPageComponentModel" />.</returns>
+    public static IReadOnlyCollection<IPageComponentModel> Flatten(this IHavePageComponents? model)
     {
         if (model is null)
         {
-            return Array.Empty<IComponentModel>();
+            return Array.Empty<IPageComponentModel>();
         }
 
-        return model.GetComponents().Flatten().FinalizeFlatten();
+        return model.GetPageComponents().Flatten().FinalizeFlatten();
     }
 
     /// <summary>
-    /// Flattens the current <see cref="IEnumerable{IComponentModel}" /> into a <see cref="IReadOnlyCollection{IComponentModel}" />.
+    /// Flattens the current <see cref="IEnumerable{IPageComponentModel}" /> into a <see cref="IReadOnlyCollection{IPageComponentModel}" />.
     /// </summary>
-    /// <param name="model">The current components.</param>
-    /// <returns>A read only collection of <see cref="IComponentModel" />.</returns>
-    public static IReadOnlyCollection<IComponentModel> Flatten(this IEnumerable<IComponentModel?>? components)
+    /// <param name="pageComponents">The current page components.</param>
+    /// <returns>A read only collection of <see cref="IPageComponentModel" />.</returns>
+    public static IReadOnlyCollection<IPageComponentModel> Flatten(this IEnumerable<IPageComponentModel?>? pageComponents)
     {
-        if (components is null)
+        if (pageComponents is null)
         {
-            return Array.Empty<IComponentModel>();
+            return Array.Empty<IPageComponentModel>();
         }
 
-        var list = new List<IComponentModel?>();
+        var list = new List<IPageComponentModel?>();
 
-        foreach (var component in components)
+        foreach (var component in pageComponents)
         {
             switch (component)
             {
-                case IHaveComponents container:
+                case IHavePageComponents container:
                     list.AddRange(container.Flatten());
                     break;
                 default:
@@ -54,13 +54,13 @@ public static class FlattenExtensions
     /// <summary>
     /// An internal function for finalizing the public Flatten methods.
     /// </summary>
-    /// <param name="components">The components.</param>
-    /// <returns>A read only collection of <see cref="IComponentModel" />.</returns>
-    private static IReadOnlyCollection<IComponentModel> FinalizeFlatten(this IEnumerable<IComponentModel?> components)
+    /// <param name="pageComponents">The page components.</param>
+    /// <returns>A read only collection of <see cref="IPageComponentModel" />.</returns>
+    private static IReadOnlyCollection<IPageComponentModel> FinalizeFlatten(this IEnumerable<IPageComponentModel?> pageComponents)
     {
-        var list = new List<IComponentModel>();
+        var list = new List<IPageComponentModel>();
 
-        foreach (var component in components)
+        foreach (var component in pageComponents)
         {
             if (component is null)
             {

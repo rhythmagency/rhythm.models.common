@@ -3,10 +3,10 @@
 /// <summary>
 /// An interface for creating a page.
 /// </summary>
-public interface IPageModel : IHaveComponents
+public interface IPageModel : IHavePageComponents
 {
     /// <summary>
     /// Gets the page content.
     /// </summary>
-    IReadOnlyCollection<IComponentModel> Content { get; }
+    IReadOnlyCollection<IPageComponentModel> Content { get; }
 }
