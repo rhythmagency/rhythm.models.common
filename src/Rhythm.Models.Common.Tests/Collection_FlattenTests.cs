@@ -18,41 +18,6 @@ public class Collection_FlattenTests
     }
 
     [Test]
-    public void Given_A_Collection_Of_Nulls_Flatten_Should_Return_An_Empty_Collection()
-    {
-        // Arrange
-        var collection = new IPageComponentModel?[]
-        {
-            null, null, null, null, null,
-        };
-
-        // Act 
-        var flattened = collection.Flatten();
-
-        // Assert
-        Assert.That(flattened, Is.Empty);
-    }
-
-    [Test]
-    public void Given_A_Mixed_Collection_Flatten_Should_Return_A_Collection_Of_Non_Nulls()
-    {
-        // Arrange
-        var collection = new IPageComponentModel?[]
-        {
-            null,
-            Substitute.For<IPageComponentModel>(),
-            Substitute.For<IPageComponentModel>(),
-        };
-
-        // Act 
-        var flattened = collection.Flatten();
-
-        // Assert
-        Assert.That(flattened, Has.Count.EqualTo(2));
-        Assert.That(flattened, Does.Not.Contains(null));
-    }
-
-    [Test]
     public void Given_A_Collection_With_Sub_Components_Then_Flatten_Should_Return_Expected_Results()
     {
         // Arrange

@@ -27,14 +27,14 @@ public static class FlattenExtensions
     /// </summary>
     /// <param name="pageComponents">The current page components.</param>
     /// <returns>A read only collection of <see cref="IPageComponentModel" />.</returns>
-    public static IReadOnlyCollection<IPageComponentModel> Flatten(this IEnumerable<IPageComponentModel?>? pageComponents)
+    public static IReadOnlyCollection<IPageComponentModel> Flatten(this IEnumerable<IPageComponentModel>? pageComponents)
     {
         if (pageComponents is null)
         {
             return Array.Empty<IPageComponentModel>();
         }
 
-        var list = new List<IPageComponentModel?>();
+        var list = new List<IPageComponentModel>();
 
         foreach (var component in pageComponents)
         {
