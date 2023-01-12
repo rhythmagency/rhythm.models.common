@@ -12,5 +12,5 @@ public interface IHavePageComponents
     /// </summary>
     /// <returns>A collection of page components</returns>
     /// <remarks>If this class is also a <see cref="IPageComponentModel"/> and should be returned by <see cref="FlattenExtensions.Flatten(IEnumerable{IPageComponentModel})"/> or <see cref="FlattenExtensions.Flatten(IHavePageComponents?)"/> then it should be included here.</remarks>
-    IReadOnlyCollection<IPageComponentModel?>? GetPageComponents();
+    IReadOnlyCollection<IPageComponentModel> GetPageComponents();
 }
